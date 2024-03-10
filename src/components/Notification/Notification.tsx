@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import { formatEther } from "viem";
 import crossIcon from "../../assets/icons/cross.svg";
 import tickIcon from "../../assets/icons/tick.svg";
+import CustomLoader from "../CustomLoader/CustomLoader";
 
 export const Notification: FC = () => {
   const location = useLocation();
@@ -33,7 +34,7 @@ export const Notification: FC = () => {
   return (
     <div className={s.notify}>
       {/*  showing loader  */}
-      {transactionStatus && !status && <div className={s.notify_loader} />}
+      {transactionStatus && !status && <CustomLoader />}
       {/*  showing success img  */}
       {status?.includes("success") && (
         <div className={s.notify_circle_success}>
@@ -50,33 +51,28 @@ export const Notification: FC = () => {
         {/* showing transaction in process messages */}
         {transactionStatus === "approve_loading" && (
           <>
-            Approving{" "}
-            <span className={s.notify_accent}>{tokenAmount} STRU </span>{" "}
+            Approving <span className={s.notify_accent}>{tokenAmount} STRU </span>{" "}
             <span className={s.notify_string}>before Staking</span>
           </>
         )}
         {transactionStatus === "stake_loading" && !status && (
           <>
-            Adding <span className={s.notify_accent}>{tokenAmount}</span> STRU
-            to Staking
+            Adding <span className={s.notify_accent}>{tokenAmount}</span> STRU to Staking
           </>
         )}
         {transactionStatus === "withdraw_loading" && (
           <>
-            Withdrawing <span className={s.notify_accent}>{tokenAmount}</span>{" "}
-            STRU
+            Withdrawing <span className={s.notify_accent}>{tokenAmount}</span> STRU
           </>
         )}
         {transactionStatus === "exit_loading" && (
           <>
-            Withdrawing <span className={s.notify_accent}>{tokenAmount}</span>{" "}
-            STRU
+            Withdrawing <span className={s.notify_accent}>{tokenAmount}</span> STRU
           </>
         )}
         {transactionStatus === "claim_loading" && (
           <>
-            Adding <span className={s.notify_accent}>{tokenAmount}</span> STRU
-            to wallet
+            Adding <span className={s.notify_accent}>{tokenAmount}</span> STRU to wallet
           </>
         )}
         {/* showing error and success messages */}
@@ -90,35 +86,31 @@ export const Notification: FC = () => {
         )}
         {status === "success_approve" && (
           <>
-            <span className={s.notify_accent}>{tokenAmount} STRU </span>{" "}
-            successfully approved
+            <span className={s.notify_accent}>{tokenAmount} STRU </span> successfully
+            approved
           </>
         )}
         {status === "success_stake" && (
           <>
-            <span className={s.notify_accent}>{tokenAmount} STRU </span>{" "}
-            successfully{" "}
+            <span className={s.notify_accent}>{tokenAmount} STRU </span> successfully{" "}
             <span className={s.notify_string}>added to Staking</span>
           </>
         )}
         {status === "success_withdraw" && (
           <>
             <span className={s.notify_accent}>{tokenAmount} STRU </span>
-            successfully{" "}
-            <span className={s.notify_string}>added to wallet</span>
+            successfully <span className={s.notify_string}>added to wallet</span>
           </>
         )}
         {status === "success_exit" && (
           <>
-            <span className={s.notify_accent}>{tokenAmount} STRU </span>{" "}
-            successfully{" "}
+            <span className={s.notify_accent}>{tokenAmount} STRU </span> successfully{" "}
             <span className={s.notify_string}>added to wallet</span>
           </>
         )}
         {status === "success_claim" && (
           <>
-            <span className={s.notify_accent}>{tokenAmount} STRU </span>{" "}
-            successfully{" "}
+            <span className={s.notify_accent}>{tokenAmount} STRU </span> successfully{" "}
             <span className={s.notify_string}>added to wallet</span>
           </>
         )}
